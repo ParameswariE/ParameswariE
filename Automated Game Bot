@@ -1,0 +1,16 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+driver = webdriver.Chrome()
+driver.get('http://orteil.dashnet.org/experiments/cookie/')
+timeout = time.time() + 5
+flag = True
+while flag:
+    if time.time() > timeout:
+        driver.find_element(By.ID, value='cookie').click()
+        score = driver.find_element(By.ID, 'money')
+        print(score.text)
+        timeout = time.time() + 5
+
+driver.quit()
